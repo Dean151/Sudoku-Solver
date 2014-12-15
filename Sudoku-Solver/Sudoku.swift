@@ -16,6 +16,7 @@ class Sudoku {
         return Int(sqrt(Float(length)))
     }
     
+    // Creating empty puzzle
     init(length: Int) {
         self.length = length
         
@@ -27,9 +28,26 @@ class Sudoku {
         self.cells = [[Int]](count: length*length, repeatedValue: possibilities)
     }
     
+    
+    // Copying puzzle
     init(puzzle: Sudoku) {
         self.length = puzzle.length
         self.cells = [[Int]](puzzle.cells)
+    }
+    
+    // Creating puzzle from Array
+    convenience init(values: [Int]) {
+        self.init(length: Int(sqrt(Float(values.count))))
+        
+        for i in 0..<values.count {
+            if values[i] > 0 && values[i] <= length {
+                if let puzzle: Sudoku = Sudoku.placeValue(sudoku: self, cell: i, value: values[i]) {
+                    self.cells = puzzle.cells
+                } else {
+                    println("This puzzle is unsolvable");
+                }
+            }
+        }
     }
     
     // The peers are the cells that are in the same row, square or column. They can not be equals in value !
@@ -93,10 +111,18 @@ class Sudoku {
         for (peer, value) in cellsToPlace {
             if let puzzle: Sudoku = placeValue(sudoku: puzzle, cell: peer, value: value) {
             } else {
+                // Puzzle is unresovable
                 return nil
             }
         }
         
         return puzzle
+    }
+    
+    // The solver function
+    class func solve(#sudoku: Sudoku) -> Sudoku? {
+        // TODO Solve sudoku
+        
+        return nil
     }
 }
