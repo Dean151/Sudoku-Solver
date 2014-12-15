@@ -8,7 +8,7 @@
 
 import Darwin
 
-class Sudoku {
+class Sudoku: Printable {
     var cells: [[Int]]
     var length: Int
     
@@ -119,10 +119,72 @@ class Sudoku {
         return puzzle
     }
     
+    class func isSolved(#sudoku: Sudoku) -> Bool {
+        for cell in sudoku.cells {
+            if cell.count != 1 {
+                return false
+            }
+        }
+        return true
+    }
+    
+    class func findWorkingCell(#sudoku: Sudoku) -> Int {
+        var eligibles = Dictionary<Int, Int>()
+        for (i,e) in enumerate(sudoku.cells) {
+            if e.count > 1 {
+                eligibles.updateValue(e.count, forKey: i)
+            }
+        }
+        
+        var min = 9
+        var index = -1
+        for (i,e) in eligibles {
+            if e < min {
+                min = e
+                index = i
+            }
+        }
+        
+        return index
+    }
+    
     // The solver function
     class func solve(#sudoku: Sudoku) -> Sudoku? {
         // TODO Solve sudoku
         
+        if isSolved(sudoku: sudoku) {
+            println("Sudoku is solved")
+            return sudoku
+        }
+
+        let activeCell = findWorkingCell(sudoku: sudoku)
+        for guess in sudoku.cells[activeCell] {
+            if let puzzle = placeValue(sudoku: sudoku, cell: activeCell, value: guess) {
+                if let puzzle = solve(sudoku: puzzle) {
+                    return puzzle
+                }
+            }
+        }
+
         return nil
+    }
+    
+    var description: String {
+        var description = ""
+        
+        for (index,possibilities) in enumerate(cells) {
+            if possibilities.count == 1 {
+                let num: Int = possibilities.first!
+                description += "\(num)"
+            } else {
+                description += "."
+            }
+            
+            if (index%length == length-1) {
+                description += "\n"
+            }
+        }
+        
+        return description
     }
 }
