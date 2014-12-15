@@ -32,6 +32,7 @@ class Sudoku {
        self.cells = [[Int]](puzzle.cells)
     }
     
+    // The peers are the cells that are in the same row, square or column. They can not be equals in value !
     func isPeer(#c1: Int, c2: Int) -> Bool {
         return (c1 / length == c2 / length            //Cells in same row
                     || c1 % length == c2 % length     //Cells in same column
@@ -40,6 +41,7 @@ class Sudoku {
                     && c1 != c2;                      //Cell is not peer to itself
     }
     
+    // Allow to get all peers for a single cell, with are all cells in the same row, column or square.
     func getPeers(#cell: Int) -> [Int] {
         var peers = [Int]()
         
