@@ -21,9 +21,13 @@ class Sudoku_SolverTests: XCTestCase {
         super.tearDown()
     }
     
-    func testExample() {
-        // This is an example of a functional test case.
-        XCTAssert(true, "Pass")
+    func TestPeers() {
+        // FIXME import Sudoku.swift somehow...
+        var p = Sudoku(length: 9);
+        var peers = p.getPeers(cell: 40);
+        
+        var expectedResult: [Int] = [4, 13, 22, 30, 31, 32, 36, 37, 38, 39, 41, 42, 43, 44, 48, 49, 50, 58, 67, 76]
+        XCTAssert(peers == expectedResult, "OK for Peers")
     }
     
     func testPerformanceExample() {
