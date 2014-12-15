@@ -28,8 +28,8 @@ class Sudoku {
     }
     
     init(puzzle: Sudoku) {
-       self.length = puzzle.length
-       self.cells = [[Int]](puzzle.cells)
+        self.length = puzzle.length
+        self.cells = [[Int]](puzzle.cells)
     }
     
     // The peers are the cells that are in the same row, square or column. They can not be equals in value !
@@ -42,7 +42,7 @@ class Sudoku {
     }
     
     // Allow to get all peers for a single cell, with are all cells in the same row, column or square.
-    func getPeers(#cell: Int) -> [Int] {
+    func peers(#cell: Int) -> [Int] {
         var peers = [Int]()
         
         for c in 0..<length*length {
@@ -52,5 +52,51 @@ class Sudoku {
         }
         
         return peers
+    }
+    
+    // We place the known values
+    class func placeValue(#sudoku: Sudoku, cell: Int, value: Int) -> Sudoku? {
+        var puzzle = Sudoku(puzzle: sudoku)
+        
+        if !contains(puzzle.cells[cell], value) {
+            return nil // If it is impossible to have this value here we rage quit
+        }
+        
+        puzzle.cells[cell] = [Int]([value]) // We set the value
+        
+        var cellsToPlace = Dictionary<Int, Int>()
+        
+        for peer in puzzle.peers(cell: cell) {
+            var newPossibilities = puzzle.cells[peer]
+            // We remove the possibility of this value in each peer
+            for (i,p) in enumerate(newPossibilities) {
+                if p == value {
+                    newPossibilities.removeAtIndex(i)
+                    break
+                }
+            }
+            
+            if newPossibilities.count == 0 {
+                // The puzzle is unresovable
+                return nil
+            }
+            
+            if newPossibilities.count == 1 && puzzle.cells[peer].count > 1 {
+                // We add the cell in the queue for adding this value
+                cellsToPlace.updateValue(newPossibilities.first!, forKey: peer)
+            }
+            
+            // We record the newPossibilities
+            puzzle.cells[peer] = newPossibilities
+        }
+        
+        for (peer, value) in cellsToPlace {
+            if let puzzle: Sudoku = placeValue(sudoku: puzzle, cell: peer, value: value) {
+            } else {
+                return nil
+            }
+        }
+        
+        return puzzle
     }
 }
