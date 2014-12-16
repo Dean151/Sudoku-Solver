@@ -136,7 +136,7 @@ class Sudoku: Printable {
             }
         }
         
-        var min = 9
+        var min = 10
         var index = -1
         for (i,e) in eligibles {
             if e < min {
@@ -150,18 +150,19 @@ class Sudoku: Printable {
     
     // The solver function
     class func solve(#sudoku: Sudoku) -> Sudoku? {
-        // TODO Solve sudoku
         
         if isSolved(sudoku: sudoku) {
             println("Sudoku is solved")
             return sudoku
         }
-
+        
         let activeCell = findWorkingCell(sudoku: sudoku)
-        for guess in sudoku.cells[activeCell] {
-            if let puzzle = placeValue(sudoku: sudoku, cell: activeCell, value: guess) {
-                if let puzzle = solve(sudoku: puzzle) {
-                    return puzzle
+        if (activeCell >= 0) {
+            for guess in sudoku.cells[activeCell] {
+                if let puzzle = placeValue(sudoku: sudoku, cell: activeCell, value: guess) {
+                    if let puzzle = solve(sudoku: puzzle) {
+                        return puzzle
+                    }
                 }
             }
         }

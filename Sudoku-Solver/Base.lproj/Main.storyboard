@@ -40,6 +40,9 @@
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Solve" id="z8L-J0-zBd">
                             <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <connections>
+                                <action selector="solveGrid:" destination="vXZ-lx-hvc" id="8Py-EL-NgU"/>
+                            </connections>
                         </barButtonItem>
                     </navigationItem>
                     <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
