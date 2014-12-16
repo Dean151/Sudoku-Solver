@@ -28,18 +28,24 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="Evc-19-H7j" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" constant="-16" id="4HF-4e-FM8"/>
-                            <constraint firstItem="Evc-19-H7j" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" constant="60" id="7kI-eM-RiT"/>
+                            <constraint firstItem="Evc-19-H7j" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" constant="60" id="GTp-fd-iqO"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Sudoku Solver" id="NGb-E4-hm0">
                         <barButtonItem key="leftBarButtonItem" title="Clear" id="bIb-yx-F5q">
                             <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <connections>
+                                <action selector="clearAll:" destination="vXZ-lx-hvc" id="w6Z-GZ-4uY"/>
+                            </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Solve" id="z8L-J0-zBd">
                             <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         </barButtonItem>
                     </navigationItem>
                     <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
+                    <connections>
+                        <outlet property="grid" destination="Evc-19-H7j" id="ZBP-Wq-Hgt"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
