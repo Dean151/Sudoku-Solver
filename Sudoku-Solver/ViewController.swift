@@ -66,6 +66,7 @@ class ViewController: UIViewController {
     @IBAction func clearAll(sender: AnyObject) {
         for label in labels {
             label.text = "."
+            label.textColor = UIColor.grayColor()
             label.value = 0
         }
     }
