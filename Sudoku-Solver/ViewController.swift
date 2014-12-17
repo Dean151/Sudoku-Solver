@@ -12,6 +12,7 @@ class ViewController: UIViewController {
     
     @IBOutlet var grid: UIImageView!
     @IBOutlet var unsolvableLabel: UILabel!
+    @IBOutlet var solvedLabel: UILabel!
     
     var labels: [MyLabel]!
 
@@ -39,8 +40,8 @@ class ViewController: UIViewController {
     
     // Should return a int between 0 and 80 if we click inside a cell, nil otherwise
     func getCell(point: CGPoint) -> Int? {
-        if point.y > 120 && point.y < 430 {
-            let cell = Int( floor((point.y-120)/35)*9 + floor((point.x-1)/35) )
+        if point.y > 120 && point.y < 440 {
+            let cell = Int( floor((point.y-120)/36)*9 + floor((point.x-1)/36) )
             return cell
         } else {
             return nil
@@ -67,6 +68,7 @@ class ViewController: UIViewController {
     // Clear all numbers
     @IBAction func clearAll(sender: AnyObject) {
         unsolvableLabel.hidden = true
+        solvedLabel.hidden = true
         for label in labels {
             label.text = "."
             label.textColor = UIColor.grayColor()
@@ -78,10 +80,11 @@ class ViewController: UIViewController {
     @IBAction func solveGrid(sender: AnyObject) {
         var numberToBePlaced = Dictionary<Int, Int>()
         unsolvableLabel.hidden = true
+        solvedLabel.hidden = true
         
         var input = [Int](count: 81, repeatedValue: 0)
         for (i,label) in enumerate(labels) {
-            if label.value != 0 {
+            if label.value != 0 && label.textColor == UIColor.blackColor() { // Excluding the number we haven't entered
                 input[i] = label.value
             }
         }
@@ -95,6 +98,7 @@ class ViewController: UIViewController {
                         label.text = "\(value)"
                     }
                 }
+                solvedLabel.hidden = false
             } else {
                 unsolvableLabel.hidden = false
             }
