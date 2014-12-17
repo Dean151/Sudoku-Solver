@@ -24,8 +24,8 @@
                                     <constraint firstAttribute="height" constant="320" id="qZd-Ya-LPr"/>
                                 </constraints>
                             </imageView>
-                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Puzzle is unsolvable" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PGc-Ri-nRC">
-                                <rect key="frame" x="16" y="457" width="288" height="21"/>
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Puzzle is unsolvable" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PGc-Ri-nRC">
+                                <rect key="frame" x="16" y="95" width="288" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="1" green="0.40000000600000002" blue="0.40000000600000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -34,7 +34,10 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="Evc-19-H7j" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" constant="-16" id="4HF-4e-FM8"/>
+                            <constraint firstItem="PGc-Ri-nRC" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" id="AeZ-m9-PLS"/>
                             <constraint firstItem="Evc-19-H7j" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" constant="60" id="GTp-fd-iqO"/>
+                            <constraint firstItem="Evc-19-H7j" firstAttribute="top" secondItem="PGc-Ri-nRC" secondAttribute="bottom" constant="8" id="PUM-BX-U2h"/>
+                            <constraint firstItem="PGc-Ri-nRC" firstAttribute="trailing" secondItem="kh9-bI-dsS" secondAttribute="trailingMargin" id="YZZ-WR-iMA"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Sudoku Solver" id="NGb-E4-hm0">
