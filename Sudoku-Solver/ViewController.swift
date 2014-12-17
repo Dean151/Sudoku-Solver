@@ -10,11 +10,13 @@ import UIKit
 
 class ViewController: UIViewController {
     
+    @IBOutlet weak var numberSelector: UISegmentedControl!
     @IBOutlet var grid: UIImageView!
     @IBOutlet var unsolvableLabel: UILabel!
     @IBOutlet var solvedLabel: UILabel!
     
     var labels: [MyLabel]!
+    var numberSelected = 0
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -48,20 +50,25 @@ class ViewController: UIViewController {
         }
     }
     
+    // Change the number selected to assign it
+    @IBAction func selectNumber(sender: AnyObject) {
+        numberSelected = numberSelector.selectedSegmentIndex
+    }
+    
     // Change the number of a cell on a tap
     func changeNumber(index: Int) {
-        let label = labels[index] as MyLabel
-        if label.value == 9 {
-            label.text = "."
-            label.textColor = UIColor.grayColor()
-            label.value = 0
-        } else if label.value == 0 {
-            label.textColor = UIColor.blackColor()
-            label.value = 1
-            label.text = "\(label.value)"
-        } else {
-            label.value += 1
-            label.text = "\(label.value)"
+        if index >= 0 && index < labels.count {
+            let label = labels[index] as MyLabel
+            
+            if numberSelected == 0 {
+                label.text = "."
+                label.textColor = UIColor.grayColor()
+                label.value = 0
+            } else if numberSelected > 0 && numberSelected <= 9 {
+                label.textColor = UIColor.blackColor()
+                label.value = numberSelected
+                label.text = "\(label.value)"
+            }
         }
     }
     
@@ -84,7 +91,7 @@ class ViewController: UIViewController {
         
         var input = [Int](count: 81, repeatedValue: 0)
         for (i,label) in enumerate(labels) {
-            if label.value != 0 && label.textColor == UIColor.blackColor() { // Excluding the number we haven't entered
+            if label.value != 0 { // Excluding the number we haven't entered
                 input[i] = label.value
             }
         }
