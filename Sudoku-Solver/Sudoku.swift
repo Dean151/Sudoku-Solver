@@ -72,6 +72,40 @@ class Sudoku: Printable {
         return peers
     }
     
+    func findWorkingCell() -> Int {
+        var eligibles = Dictionary<Int, Int>()
+        for (i,e) in enumerate(self.cells) {
+            if e.count > 1 {
+                eligibles.updateValue(e.count, forKey: i)
+            }
+        }
+        
+        var min = 10
+        var index = [-1]
+        for (i,e) in eligibles {
+            if e < min {
+                min = e
+                index = [i]
+            } else if e == min {
+                index.append(i)
+            }
+        }
+        
+        // Random assignment to allow random generation of Sudoku puzzle
+        let random = Int(arc4random_uniform(UInt32(index.count)))
+        return index[random]
+    }
+    
+    // Let know if the actual sudoku is solved, witch is nice
+    func isSolved() -> Bool {
+        for cell in self.cells {
+            if cell.count != 1 {
+                return false
+            }
+        }
+        return true
+    }
+    
     // We place the known values
     class func placeValue(#sudoku: Sudoku, cell: Int, value: Int) -> Sudoku? {
         var puzzle = Sudoku(puzzle: sudoku)
@@ -119,44 +153,15 @@ class Sudoku: Printable {
         return puzzle
     }
     
-    class func isSolved(#sudoku: Sudoku) -> Bool {
-        for cell in sudoku.cells {
-            if cell.count != 1 {
-                return false
-            }
-        }
-        return true
-    }
-    
-    class func findWorkingCell(#sudoku: Sudoku) -> Int {
-        var eligibles = Dictionary<Int, Int>()
-        for (i,e) in enumerate(sudoku.cells) {
-            if e.count > 1 {
-                eligibles.updateValue(e.count, forKey: i)
-            }
-        }
-        
-        var min = 10
-        var index = -1
-        for (i,e) in eligibles {
-            if e < min {
-                min = e
-                index = i
-            }
-        }
-        
-        return index
-    }
-    
     // The solver function
     class func solve(#sudoku: Sudoku) -> Sudoku? {
         
-        if isSolved(sudoku: sudoku) {
+        if sudoku.isSolved() {
             println("Sudoku is solved")
             return sudoku
         }
         
-        let activeCell = findWorkingCell(sudoku: sudoku)
+        let activeCell = sudoku.findWorkingCell()
         if (activeCell >= 0) {
             for guess in sudoku.cells[activeCell] {
                 if let puzzle = placeValue(sudoku: sudoku, cell: activeCell, value: guess) {
