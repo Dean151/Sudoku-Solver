@@ -29,6 +29,7 @@ class ViewController: UIViewController {
             l.text = ".";
             l.textAlignment = NSTextAlignment.Center
             l.textColor = UIColor.grayColor()
+            l.font = UIFont.systemFontOfSize(17)
             
             let x = (i%9)*35 + 19
             let y = Int(floor(Double(i)/9)*35) + 145
@@ -61,13 +62,16 @@ class ViewController: UIViewController {
             let label = labels[index] as MyLabel
             
             if numberSelected == 0 {
+                label.value = 0
                 label.text = "."
                 label.textColor = UIColor.grayColor()
-                label.value = 0
+                label.font = UIFont.systemFontOfSize(17)
+                
             } else if numberSelected > 0 && numberSelected <= 9 {
-                label.textColor = UIColor.blackColor()
                 label.value = numberSelected
                 label.text = "\(label.value)"
+                label.textColor = UIColor.blackColor()
+                label.font = UIFont.boldSystemFontOfSize(17)
             }
         }
     }
@@ -79,6 +83,7 @@ class ViewController: UIViewController {
         for label in labels {
             label.text = "."
             label.textColor = UIColor.grayColor()
+            label.font = UIFont.systemFontOfSize(17)
             label.value = 0
         }
     }
