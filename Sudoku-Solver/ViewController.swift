@@ -11,6 +11,8 @@ import UIKit
 class ViewController: UIViewController {
     
     @IBOutlet var grid: UIImageView!
+    @IBOutlet var unsolvableLabel: UILabel!
+    
     var labels: [MyLabel]!
 
     override func viewDidLoad() {
@@ -64,6 +66,7 @@ class ViewController: UIViewController {
     
     // Clear all numbers
     @IBAction func clearAll(sender: AnyObject) {
+        unsolvableLabel.hidden = true
         for label in labels {
             label.text = "."
             label.textColor = UIColor.grayColor()
@@ -74,6 +77,7 @@ class ViewController: UIViewController {
     // Solve the actual grid
     @IBAction func solveGrid(sender: AnyObject) {
         var numberToBePlaced = Dictionary<Int, Int>()
+        unsolvableLabel.hidden = true
         
         var input = [Int](count: 81, repeatedValue: 0)
         for (i,label) in enumerate(labels) {
@@ -84,14 +88,18 @@ class ViewController: UIViewController {
         
         let puzzle = Sudoku(values: input)
         if let solvedSudoku = Sudoku.solve(sudoku: puzzle) {
-            for (i,cell) in enumerate(solvedSudoku.cells) {
-                let label: UILabel = labels[i]
-                if let value:Int = cell.first {
-                    label.text = "\(value)"
+            if solvedSudoku.solvable {
+                for (i,cell) in enumerate(solvedSudoku.cells) {
+                    let label: UILabel = labels[i]
+                    if let value:Int = cell.first {
+                        label.text = "\(value)"
+                    }
                 }
+            } else {
+                unsolvableLabel.hidden = false
             }
         } else {
-            println("Unsolvable")
+            unsolvableLabel.hidden = false
         }
     }
     

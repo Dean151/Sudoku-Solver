@@ -11,6 +11,7 @@ import Darwin
 class Sudoku: Printable {
     var cells: [[Int]]
     var length: Int
+    var solvable = true
     
     var boxSize: Int {
         return Int(sqrt(Float(length)))
@@ -26,6 +27,8 @@ class Sudoku: Printable {
         }
         // We create an array of n*n values, each value have n possibilities
         self.cells = [[Int]](count: length*length, repeatedValue: possibilities)
+        
+        self.solvable = true
     }
     
     
@@ -33,6 +36,7 @@ class Sudoku: Printable {
     init(puzzle: Sudoku) {
         self.length = puzzle.length
         self.cells = [[Int]](puzzle.cells)
+        self.solvable = puzzle.solvable
     }
     
     // Creating puzzle from Array
@@ -44,7 +48,7 @@ class Sudoku: Printable {
                 if let puzzle: Sudoku = Sudoku.placeValue(sudoku: self, cell: i, value: values[i]) {
                     self.cells = puzzle.cells
                 } else {
-                    println("This puzzle is unsolvable");
+                    self.solvable = false
                 }
             }
         }
@@ -157,7 +161,6 @@ class Sudoku: Printable {
     class func solve(#sudoku: Sudoku) -> Sudoku? {
         
         if sudoku.isSolved() {
-            println("Sudoku is solved")
             return sudoku
         }
         
