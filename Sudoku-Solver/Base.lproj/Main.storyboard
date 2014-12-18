@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6724" systemVersion="14C81f" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="F6f-Ji-O8p">
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6711"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
@@ -18,26 +19,26 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Grid" translatesAutoresizingMaskIntoConstraints="NO" id="Evc-19-H7j">
-                                <rect key="frame" x="0.0" y="124" width="320" height="320"/>
+                                <rect key="frame" x="0.0" y="111" width="320" height="320"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="320" id="i8D-Ut-Brz"/>
                                     <constraint firstAttribute="height" constant="320" id="qZd-Ya-LPr"/>
                                 </constraints>
                             </imageView>
                             <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Puzzle is unsolvable" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PGc-Ri-nRC">
-                                <rect key="frame" x="16" y="95" width="288" height="20.5"/>
+                                <rect key="frame" x="16" y="82.5" width="288" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="1" green="0.40000000600000002" blue="0.40000000600000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Puzzle solved" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tMt-fB-zd2">
-                                <rect key="frame" x="16" y="95" width="288" height="21"/>
+                                <rect key="frame" x="16" y="82" width="288" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.17302124788629045" green="0.71995344065656564" blue="0.15080469552201589" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="ydq-v1-oZy">
-                                <rect key="frame" x="16" y="470" width="288" height="29"/>
+                                <rect key="frame" x="16" y="457" width="288" height="29"/>
                                 <segments>
                                     <segment title="1"/>
                                     <segment title="2"/>
@@ -59,7 +60,7 @@
                         <constraints>
                             <constraint firstItem="Evc-19-H7j" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" constant="-16" id="4HF-4e-FM8"/>
                             <constraint firstItem="PGc-Ri-nRC" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" id="AeZ-m9-PLS"/>
-                            <constraint firstItem="Evc-19-H7j" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" constant="60" id="GTp-fd-iqO"/>
+                            <constraint firstItem="Evc-19-H7j" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" constant="47" id="GTp-fd-iqO"/>
                             <constraint firstItem="ydq-v1-oZy" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" id="Mo9-kY-Wey"/>
                             <constraint firstItem="Evc-19-H7j" firstAttribute="top" secondItem="PGc-Ri-nRC" secondAttribute="bottom" constant="8" id="PUM-BX-U2h"/>
                             <constraint firstItem="PGc-Ri-nRC" firstAttribute="trailing" secondItem="kh9-bI-dsS" secondAttribute="trailingMargin" id="YZZ-WR-iMA"/>

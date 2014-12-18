@@ -7,13 +7,17 @@
 //
 
 import UIKit
+import iAd
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, ADBannerViewDelegate {
     
     @IBOutlet weak var numberSelector: UISegmentedControl!
     @IBOutlet var grid: UIImageView!
     @IBOutlet var unsolvableLabel: UILabel!
     @IBOutlet var solvedLabel: UILabel!
+    
+    // iAd
+    var adBannerView: ADBannerView!
     
     var labels: [MyLabel]!
     var numberSelected = 1
@@ -32,19 +36,39 @@ class ViewController: UIViewController {
             l.font = UIFont.systemFontOfSize(17)
             
             let x = (i%9)*35 + 19
-            let y = Int(floor(Double(i)/9)*35) + 145
+            let y = Int(floor(Double(i)/9)*35) + 132
             
             l.center = CGPoint(x: x, y: y)
             
             labels.append(l)
             self.view.addSubview(l)
         }
+        
+        // Setting up iAd
+        self.loadAds()
+    }
+    
+    // Setting up iAd
+    func loadAds() {
+        adBannerView = ADBannerView(frame: CGRect.zeroRect)
+        adBannerView.center = CGPoint(x: adBannerView.center.x, y: view.bounds.size.height - adBannerView.frame.size.height / 2)
+        adBannerView.delegate = self
+        adBannerView.hidden = true
+        view.addSubview(adBannerView)
+    }
+    
+    func bannerViewDidLoadAd(banner: ADBannerView!) {
+        adBannerView.hidden = false
+    }
+    
+    func bannerView(banner: ADBannerView!, didFailToReceiveAdWithError error: NSError!) {
+        adBannerView.hidden = true
     }
     
     // Should return a int between 0 and 80 if we click inside a cell, nil otherwise
     func getCell(point: CGPoint) -> Int? {
-        if point.y > 120 && point.y < 440 {
-            let cell = Int( floor((point.y-120)/36)*9 + floor((point.x-1)/36) )
+        if point.y > 107 && point.y < 427 {
+            let cell = Int( floor((point.y-107)/36)*9 + floor((point.x-1)/36) )
             return cell
         } else {
             return nil
