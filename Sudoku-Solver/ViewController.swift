@@ -34,8 +34,8 @@ class ViewController: UIViewController, ADBannerViewDelegate {
             l.textColor = UIColor.grayColor()
             l.font = UIFont.systemFontOfSize(17)
             
-            let x = (i%9)*35 + 19
-            let y = Int(floor(Double(i)/9)*35) + 132
+            let x = (i%9)*35 + 21
+            let y = Int(floor(Double(i)/9)*35) + 134
             
             l.center = CGPoint(x: x, y: y)
             
