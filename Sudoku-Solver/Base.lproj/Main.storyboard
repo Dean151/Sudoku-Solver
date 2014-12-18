@@ -18,27 +18,14 @@
                         <rect key="frame" x="0.0" y="64" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Grid" translatesAutoresizingMaskIntoConstraints="NO" id="Evc-19-H7j">
-                                <rect key="frame" x="0.0" y="111" width="320" height="320"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="320" id="i8D-Ut-Brz"/>
-                                    <constraint firstAttribute="height" constant="320" id="qZd-Ya-LPr"/>
-                                </constraints>
-                            </imageView>
-                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Puzzle is unsolvable" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PGc-Ri-nRC">
-                                <rect key="frame" x="16" y="82.5" width="288" height="20.5"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="1" green="0.40000000600000002" blue="0.40000000600000002" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Puzzle solved" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tMt-fB-zd2">
-                                <rect key="frame" x="16" y="82" width="288" height="21"/>
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Puzzle solved" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tMt-fB-zd2">
+                                <rect key="frame" x="16" y="442" width="288" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.17302124788629045" green="0.71995344065656564" blue="0.15080469552201589" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="ydq-v1-oZy">
-                                <rect key="frame" x="16" y="457" width="288" height="29"/>
+                                <rect key="frame" x="16" y="75" width="288" height="29"/>
                                 <segments>
                                     <segment title="1"/>
                                     <segment title="2"/>
@@ -55,17 +42,25 @@
                                     <action selector="selectNumber:" destination="vXZ-lx-hvc" eventType="valueChanged" id="cDb-Ow-C7I"/>
                                 </connections>
                             </segmentedControl>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Grid" translatesAutoresizingMaskIntoConstraints="NO" id="Evc-19-H7j">
+                                <rect key="frame" x="0.0" y="114" width="320" height="320"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="320" id="i8D-Ut-Brz"/>
+                                    <constraint firstAttribute="height" constant="320" id="qZd-Ya-LPr"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="320" id="qqr-ej-hVc"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="Evc-19-H7j" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" constant="-16" id="4HF-4e-FM8"/>
-                            <constraint firstItem="PGc-Ri-nRC" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" id="AeZ-m9-PLS"/>
-                            <constraint firstItem="Evc-19-H7j" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" constant="47" id="GTp-fd-iqO"/>
-                            <constraint firstItem="ydq-v1-oZy" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" id="Mo9-kY-Wey"/>
-                            <constraint firstItem="Evc-19-H7j" firstAttribute="top" secondItem="PGc-Ri-nRC" secondAttribute="bottom" constant="8" id="PUM-BX-U2h"/>
-                            <constraint firstItem="PGc-Ri-nRC" firstAttribute="trailing" secondItem="kh9-bI-dsS" secondAttribute="trailingMargin" id="YZZ-WR-iMA"/>
-                            <constraint firstItem="ydq-v1-oZy" firstAttribute="top" secondItem="Evc-19-H7j" secondAttribute="bottom" constant="26" id="lPk-Q4-bC2"/>
-                            <constraint firstItem="ydq-v1-oZy" firstAttribute="trailing" secondItem="kh9-bI-dsS" secondAttribute="trailingMargin" id="sKg-PI-Oyd"/>
+                            <constraint firstItem="ydq-v1-oZy" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" constant="11" id="45J-Sp-rjZ"/>
+                            <constraint firstItem="ydq-v1-oZy" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" id="9hT-9V-ijq"/>
+                            <constraint firstItem="Evc-19-H7j" firstAttribute="top" secondItem="ydq-v1-oZy" secondAttribute="bottom" constant="11" id="UiG-f4-yhd"/>
+                            <constraint firstItem="tMt-fB-zd2" firstAttribute="top" secondItem="Evc-19-H7j" secondAttribute="bottom" constant="8" id="aKD-FE-ga8"/>
+                            <constraint firstItem="tMt-fB-zd2" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" id="acy-DN-KNz"/>
+                            <constraint firstItem="Evc-19-H7j" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" constant="-16" id="e5e-fq-OAO"/>
+                            <constraint firstItem="ydq-v1-oZy" firstAttribute="trailing" secondItem="kh9-bI-dsS" secondAttribute="trailingMargin" id="vIo-uE-Pa1"/>
+                            <constraint firstItem="tMt-fB-zd2" firstAttribute="trailing" secondItem="kh9-bI-dsS" secondAttribute="trailingMargin" id="xfo-bg-z5P"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Sudoku Solver" id="NGb-E4-hm0">
@@ -87,7 +82,6 @@
                         <outlet property="grid" destination="Evc-19-H7j" id="ZBP-Wq-Hgt"/>
                         <outlet property="numberSelector" destination="ydq-v1-oZy" id="USv-4O-E3G"/>
                         <outlet property="solvedLabel" destination="tMt-fB-zd2" id="xRj-I3-1KJ"/>
-                        <outlet property="unsolvableLabel" destination="PGc-Ri-nRC" id="6KC-mY-WJw"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
