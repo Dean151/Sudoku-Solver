@@ -16,7 +16,7 @@ class ViewController: UIViewController {
     @IBOutlet var solvedLabel: UILabel!
     
     var labels: [MyLabel]!
-    var numberSelected = 0
+    var numberSelected = 1
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -53,7 +53,11 @@ class ViewController: UIViewController {
     
     // Change the number selected to assign it
     @IBAction func selectNumber(sender: AnyObject) {
-        numberSelected = numberSelector.selectedSegmentIndex
+        if numberSelector.selectedSegmentIndex >= 0 && numberSelector.selectedSegmentIndex < 9 {
+            numberSelected = numberSelector.selectedSegmentIndex + 1
+        } else {
+            numberSelected = 0
+        }
     }
     
     // Change the number of a cell on a tap
