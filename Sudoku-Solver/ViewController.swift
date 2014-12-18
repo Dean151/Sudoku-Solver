@@ -13,7 +13,6 @@ class ViewController: UIViewController, ADBannerViewDelegate {
     
     @IBOutlet weak var numberSelector: UISegmentedControl!
     @IBOutlet var grid: UIImageView!
-    @IBOutlet var unsolvableLabel: UILabel!
     @IBOutlet var solvedLabel: UILabel!
     
     // iAd
@@ -106,7 +105,6 @@ class ViewController: UIViewController, ADBannerViewDelegate {
     
     // Clear all numbers
     @IBAction func clearAll(sender: AnyObject) {
-        unsolvableLabel.hidden = true
         solvedLabel.hidden = true
         for label in labels {
             label.text = "."
@@ -119,7 +117,6 @@ class ViewController: UIViewController, ADBannerViewDelegate {
     // Solve the actual grid
     @IBAction func solveGrid(sender: AnyObject) {
         var numberToBePlaced = Dictionary<Int, Int>()
-        unsolvableLabel.hidden = true
         solvedLabel.hidden = true
         
         var input = [Int](count: 81, repeatedValue: 0)
@@ -140,11 +137,20 @@ class ViewController: UIViewController, ADBannerViewDelegate {
                 }
                 solvedLabel.hidden = false
             } else {
-                unsolvableLabel.hidden = false
+                alertUnsolvable()
             }
         } else {
-            unsolvableLabel.hidden = false
+            alertUnsolvable()
         }
+    }
+    
+    // Display an alert saying the puzzle is unsolvable
+    func alertUnsolvable() {
+        let alertController = UIAlertController(title: "Unsolvable", message:
+            "Sorry, this puzzle is unsolvable !", preferredStyle: UIAlertControllerStyle.Alert)
+        alertController.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default,handler: nil))
+        
+        self.presentViewController(alertController, animated: true, completion: nil)
     }
     
     override func touchesBegan(touches: NSSet, withEvent event: UIEvent) {
