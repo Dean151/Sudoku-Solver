@@ -153,8 +153,8 @@ class ViewController: UIViewController, ADBannerViewDelegate {
         self.presentViewController(alertController, animated: true, completion: nil)
     }
     
-    override func touchesBegan(touches: NSSet, withEvent event: UIEvent) {
-        if let touch: AnyObject = touches.anyObject() {
+    override func touchesBegan(touches: Set<NSObject>, withEvent event: UIEvent) {
+        if let touch: AnyObject = touches.first {
             let p = touch.locationInView(nil)
             if let index = getCell(p) {
                 changeNumber(index)

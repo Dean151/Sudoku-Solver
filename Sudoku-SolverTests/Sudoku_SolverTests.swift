@@ -9,8 +9,6 @@
 import UIKit
 import XCTest
 
-import Sudoku_Solver
-
 class Sudoku_SolverTests: XCTestCase {
     
     override func setUp() {
